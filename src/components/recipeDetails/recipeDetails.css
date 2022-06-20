@@ -1,0 +1,130 @@
+.container-details {
+  font-size: 1rem;
+  display: flex;
+}
+
+.title-detail {
+  font-size: 1.5rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.listSteps{
+  list-style: none;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-left:  .8rem;
+}
+
+.number-list{
+  font-size: .95rem;
+  background-color: hsl(51, 100%, 53%);
+  padding: .1rem .8rem;
+  border-radius: 50%;
+  margin-right: .4rem;
+  float: left;
+}
+
+.encabezado-detail {
+  background: rgb(219, 186, 0);
+  background: linear-gradient(
+    166deg,
+    rgba(219, 186, 0, 1) 26%,
+    rgba(255, 219, 15, 1) 65%,
+    rgba(249, 231, 130, 0.9472163865546218) 97%
+  );
+  margin: 1rem auto;
+  border-radius: 2rem 2rem 0 0;
+}
+
+.container-detrecipe {
+  width: 70%;
+  margin: 1rem auto;
+  text-align: center;
+  border-radius: 2rem;
+  border: 1px solid hsl(51, 100%, 53%);
+}
+
+.container-steps {
+  padding-top: 0.2rem;
+  background-color: rgba(187, 187, 187, 0.253);
+  border-radius: 0.5rem;
+  line-height: 1.9;
+  margin: 1.5rem auto;
+  width: 78%;
+}
+
+.container-summary {
+  width: 78%;
+  font-size: .93rem;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.container-steps p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.container-details ol {
+  margin: 0 2rem;
+  font-size: 1rem;
+  padding-bottom: 1.2rem;
+}
+
+.container-diets {
+  border-radius: 0.5rem;
+  width: 78%;
+  margin: 0 auto;
+}
+
+.container-diets p {
+  padding-top: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.list-diets {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1.2rem;
+  justify-content: space-around;
+}
+
+.list-diets li {
+  background-color: hsl(51, 100%, 50%);
+  border-radius: 0.8rem;
+  font-size: 0.95rem;
+  margin: 0.4rem 4% 0.4rem 0.2rem;
+  width: 12rem;
+}
+
+.img-recipe {
+  width: 38%;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.container-score {
+  width: 78%;
+  display: flex;
+  font-size: .9rem;
+  justify-content: space-around;
+  margin: 1.3rem auto;
+}
+
+.text-msh{
+  border-bottom: .15rem solid hsl(51, 100%, 50%);
+}
+
+.container-backtohome{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.container-backtohome a {
+  color: #000;
+}

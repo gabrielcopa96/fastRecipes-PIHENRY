@@ -1,0 +1,79 @@
+.list-dietas{
+  list-style: none;
+}
+
+.list-steps{
+  width: 92.6%;
+  display: grid;
+  /* margin-top: .7rem; */
+  margin-left: 2.5rem;
+}
+
+.list-steps label {
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.list-steps input {
+  width: 80%;
+  border: none;
+  border-radius: .2rem;
+  margin-bottom: .5rem;
+  height: 1.85rem;
+}
+
+.image-recipe{
+  border: 1px solid hsl(51, 100%, 50%);
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+  width: 410px;
+  height: 265px;
+  border-radius: .5rem;
+  margin-left: 2.7rem;
+}
+
+.image-recipe img {
+  width: 410px;
+  height: 265px;
+  border-radius: .5rem;
+}
+
+@media (max-width: 767px) {
+  .image-recipe{
+    width: 385px;
+    height: 260px;
+  }
+  
+  .image-recipe img {
+    width: 385px;
+    height: 260px;
+    border-radius: .5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .image-recipe{
+    width: 360px;
+    height: 245px;
+  }
+  
+  .image-recipe img {
+    width: 360px;
+    height: 245px;
+    border-radius: .5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .image-recipe{
+    width: 248px;
+    height: 185px;
+  }
+  
+  .image-recipe img {
+    width: 248px;
+    color:hsl(192, 67%, 42%);
+    height: 185px;
+    border-radius: .5rem;
+  }
+}

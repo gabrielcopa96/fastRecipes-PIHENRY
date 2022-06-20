@@ -1,0 +1,70 @@
+.navbar {
+  background-color: hsl(207 19% 9% / 0.9);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-logo {
+  background-image: url("../../img/destello.png");
+  font-size: 1rem;
+}
+
+.title-navbar {
+  margin-left: 9rem;
+  color: hsl(0, 0%, 100%);
+}
+
+.prueba-title {
+  font-size: 1.4rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    cursive;
+}
+
+.title-navbar-2 {
+  color: hsl(51, 100%, 50%);
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.list-navbar {
+  display: inline-flex;
+  margin-right: 7rem;
+}
+
+.list-navbar li {
+  list-style: none;
+  margin: 0.2rem 1rem;
+  padding: 0.55rem 0.55rem;
+}
+
+.list-navbar li a {
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+}
+
+.list-navbar li a:hover {
+  color: hsl(51, 100%, 50%);
+}
+
+.btn-createrecipe {
+  background-color: hsl(51, 100%, 50%);
+  border-radius: 0.3rem;
+}
+
+.btn-createrecipe:hover {
+  background-color: rgb(201, 161, 53);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-createrecipe a {
+  color: rgb(24, 29, 34) !important;
+  font-weight: 600;
+}
+
+.btn-createrecipe a:hover {
+  color: hsl(0, 0%, 100%);
+}

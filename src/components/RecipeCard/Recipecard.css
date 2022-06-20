@@ -1,0 +1,112 @@
+:root {
+    --clr-neutral-900: hsl(207,19%,9%)
+    --clr-neutral-100: hsl(0,0%,100%)
+    --clr-accent-400: hsl(142,90%,61%)
+}
+
+.container-child-card{
+    flex: 0 28%;
+    margin-bottom: 3%; /* (100-32*3)/2*/
+}
+
+.card-recipe{
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 45ch;
+    color: hsl(0,0%,100%);
+    align-items: center;
+    border-radius: 8%;
+    padding: 2.5rem -.2rem 0;
+    height: 300px;
+    overflow: hidden;
+}
+
+.card-content{
+    --padding: 1.2rem;
+    height: 50%;
+    padding: var(--padding);
+    border-radius: 0 0 11% 11%;
+    background: linear-gradient(
+        hsl(0 0% 0% / 0.3),
+        hsl(0 0% 0% / 0.7),
+        hsl(51 100% 50% / 0.4)
+    );
+    transform: translateY(100%);
+    transition: transform 500ms ease-in-out;
+}
+
+.card-recipe:hover .card-content {
+    transform: translateY(60%)
+}
+
+
+.card-title {
+    position: relative;
+    margin-top: -.1rem;
+    font-size: .95rem;
+}
+
+.card-body {
+    font-size: .82rem;
+}
+
+.card-title::after {
+    content: "";
+    position: absolute;
+    margin: 0 0 -.2rem 0;
+    left: calc(var(--padding) * -1);
+    bottom: 0;
+    width: calc(95% + var(--padding));
+    height: 4px;
+    background: hsl(51, 100%, 50%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+}
+
+.card-recipe:hover .card-title::after {
+    transform: scaleX(1);
+}
+
+.card-body{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5rem 0 10px 0;
+}
+
+.card-body p{
+    border: 1px solid hsl(51, 100%, 50%);
+    border-radius: .4rem;
+    padding: .2rem;
+    margin: 0 .2rem 0 .2rem;
+}
+
+.card-recipe:hover .card-body {
+    margin: .5rem 0 .5rem 0;
+}
+
+.btn-card{
+    display: inline;
+    border: none;
+    font-family: 'Bebas Neue', cursive;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: .25em;
+    background-color: hsl(51, 100%, 50%);
+    color: hsl(207 19% 9%);
+    padding: 0.3rem 1em;
+}
+
+.btn-card:hover,
+.btn-card:focus {
+    background-color: hsl(51, 91%, 46%);
+}
+
+.prueba{
+    background: linear-gradient(
+        hsl(142 90% 61% / 0.4),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.7)
+    )
+}

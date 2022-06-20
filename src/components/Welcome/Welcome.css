@@ -1,0 +1,94 @@
+.container-welcome{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.Welcome{
+    background-color: rgba(255, 255, 255, 0.151);
+    border: .2rem solid hsl(51, 100%, 50%);
+    padding: 10rem 15rem;
+    text-align: center;
+    color: #fff;   
+}
+
+.logo-welcome:after{
+    position: absolute;
+    content: "";
+    height: 60px;
+    width: 4px;
+    top: 0px;
+    right: 0px;
+    background: white;
+    color: #fff;
+    animation: textwrite .8s steps(3) infinite;
+}
+
+@keyframes textwrite {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 0;
+    }
+}
+
+.logo-welcome{
+    font-size: 2.2rem;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    letter-spacing: .12rem;
+    -webkit-box-reflect: below -14px linear-gradient(to bottom, transparent, rgba(255,255,255,0.4));
+    animation: teyping 6s steps(13) infinite;
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+
+@keyframes teyping {
+    0% {
+      width :0;
+      
+    }
+    50%{
+      width:100%;
+    }
+    100%{
+      width:0;
+    }
+  }
+
+
+
+.title-2{
+    color: hsl(51, 100%, 50%);
+    font-size: 3.2rem;
+}
+
+.btn-welcome{
+    border: .13rem solid hsl(51, 100%, 50%);
+    padding: 1.2rem;
+    text-align: center;
+    font-family: 'Bebas Neue';
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 1.8rem;
+    align-self: center;
+    margin-top:3rem;
+}
+
+.btn-welcome:hover{
+    background-color:hsl(51, 100%, 50%);
+    color: hsl(207, 19%, 9%);
+    transition: all .8s ease;
+}

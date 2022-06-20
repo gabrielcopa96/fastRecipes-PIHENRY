@@ -1,0 +1,81 @@
+.pageNumber {
+  list-style: none;
+  width: 45%;
+  margin: 0.2rem auto;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.container-paginate {
+  text-align: center;
+}
+
+.pag-prev {
+  background-color: hsl(51, 100%, 50%);
+  border: none;
+  font-family: "Bebas Neue";
+  font-size: 1.2rem;
+  color: rgb(19, 19, 19);
+  cursor: pointer;
+  border-radius: 10%;
+  margin: 0 0.4rem;
+}
+
+.pag-next {
+  background-color: hsl(51, 100%, 50%);
+  border: none;
+  color: rgb(19, 19, 19);
+  font-size: 1.2rem;
+  font-family: "Bebas Neue";
+  cursor: pointer;
+  border-radius: 10%;
+  margin: 0 0.4rem;
+}
+
+@media (max-width: 620px) {
+  .pageNumber {
+    width: 80%;
+    margin: 0.6rem 1rem;
+    left: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 322px) {
+  /* .container-paginate {
+    margin: 0 -5rem;
+  } */
+
+  .pageNumber {
+    width: 60%;
+    margin: 0.6rem -0.65rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+  }
+}
+
+.container-paginate li {
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.pageNumber li {
+  width: 60%;
+  border: 1px solid hsl(51, 100%, 50%);
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.pageNumber li.active {
+  background-color: hsl(51, 100%, 50%);
+  color: rgb(19, 19, 19);
+}
+
+.pageNumber li:hover {
+  background-color: hsl(51, 100%, 50%);
+}
