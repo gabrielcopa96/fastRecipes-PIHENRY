@@ -9,7 +9,7 @@ import axios from 'axios';
 
 import store from './redux/store';
 
-axios.defaults.baseURL = 'https://fittnet.herokuapp.com';
+axios.defaults.baseURL = 'https://fastfoods2.herokuapp.com';
 
 
 ReactDOM.render(
