@@ -5,12 +5,10 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import dotenv from 'dotenv';
 
 import store from './redux/store';
 
-dotenv.config();
-axios.defaults.baseURL = process.env.URL_BACK || 'http://localhost:3001';
+axios.defaults.baseURL = 'https://fittnet.herokuapp.com';
 
 
 ReactDOM.render(
