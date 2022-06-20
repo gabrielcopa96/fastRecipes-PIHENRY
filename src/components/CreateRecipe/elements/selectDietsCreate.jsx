@@ -9,7 +9,7 @@ import {
   DietsAdd,
   BtnEliminar,
 } from "../createRecipeStyled";
-import { faCircleCheck } from "@fontawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const selectDietsCreate = ({
   label,

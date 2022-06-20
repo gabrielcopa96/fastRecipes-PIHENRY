@@ -6,7 +6,7 @@ import {
   IconValidation,
   LeyendaError,
 } from "../createRecipeStyled.jsx";
-import { faCircleCheck, faTimesCircle } from "@fontawesome/free-solid-svg-icons";
+import { faCircleCheck, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 const ContenidoInput = ({
   label,

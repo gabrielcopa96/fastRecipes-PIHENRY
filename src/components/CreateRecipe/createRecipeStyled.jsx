@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fontawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const colores = {
   fondo: "hsl(51, 100%, 50%)",
