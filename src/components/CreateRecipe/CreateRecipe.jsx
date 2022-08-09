@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllDiets } from "../../redux/actions";
-import { Link } from "react-router-dom";
-import { postRecipes } from "../../redux/actions";
+import React, { useState } from "react";
+import { getDietas } from "../../redux/actions";
+import { Link, useNavigate } from "react-router-dom";
+import { envioRecipes } from "../../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import InputCreateRecipe from "./elements/ContenidoInput.jsx";
 import SelectCreateRecipe from "./elements/selectDietsCreate.jsx";
 import SummaryCreateRecipe from "./elements/SummaryCreate.jsx";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   FormRecipe,
   ContenedorBotonCentrado,
@@ -20,12 +20,8 @@ import {
 } from "./createRecipeStyled.jsx";
 
 import "./CreateRecipe.css";
-import { useCallback } from "react";
 
 const CreateRecipe = () => {
-  const diets = useSelector((state) => state.diets);
-
-  const dispatch = useDispatch();
 
   const [title, setTitle] = useState({ campo: "", validate: null });
   const [puntuacion, setPuntuacion] = useState({ campo: 0, validate: null });
@@ -53,14 +49,17 @@ const CreateRecipe = () => {
     validStep: null,
   });
 
-  const instantCallback = useCallback(dispatch, [dispatch]);
+  const navigate = useNavigate()
 
-  // diets
-  useEffect(() => {
-    if (diets.length === 0) {
-      instantCallback(getAllDiets());
+  const queryClient = useQueryClient();
+
+  const { data: diets } = useQuery(["diets"], getDietas, { retry: 1 });
+
+  const { mutate: dispatchRecipes, isLoading: loadingPost, error: errorPost, isSuccess: confirmPost, status } = useMutation(envioRecipes, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("recipes");
     }
-  }, [instantCallback]);
+  });
 
   const handleChangeInput = (e) => {
     setInput({
@@ -85,7 +84,6 @@ const CreateRecipe = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(input);
     if (
       title.validate === "true" &&
       puntuacion.validate === "true" &&
@@ -95,7 +93,11 @@ const CreateRecipe = () => {
       resumen.validate === "true"
     ) {
       setFormValidate(true);
-      dispatch(postRecipes(input)); //disparo una funcion -> POST
+      dispatchRecipes(input, {
+        onSuccess: () => {
+          navigate('/home');
+        }
+      }); //disparo una funcion -> POST
       setInput({
         title: "",
         healthscore: 0,
@@ -106,6 +108,8 @@ const CreateRecipe = () => {
         summary: "",
         diets: [],
       });
+      console.log('esta es mi success', confirmPost)
+      console.log('este es mi error por si tira error', errorPost)
     } else {
       setFormValidate(false);
     }

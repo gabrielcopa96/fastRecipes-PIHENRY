@@ -1,9 +1,9 @@
-.container-details {
+.containerDetails {
   font-size: 1rem;
   display: flex;
 }
 
-.title-detail {
+.titleDetail {
   font-size: 1.5rem;
   margin-top: -1rem;
   margin-bottom: 1rem;
@@ -18,7 +18,7 @@
   margin-left:  .8rem;
 }
 
-.number-list{
+.numberList{
   font-size: .95rem;
   background-color: hsl(51, 100%, 53%);
   padding: .1rem .8rem;
@@ -27,7 +27,7 @@
   float: left;
 }
 
-.encabezado-detail {
+.encabezadoDetail {
   background: rgb(219, 186, 0);
   background: linear-gradient(
     166deg,
@@ -39,7 +39,7 @@
   border-radius: 2rem 2rem 0 0;
 }
 
-.container-detrecipe {
+.containerDetrecipe {
   width: 70%;
   margin: 1rem auto;
   text-align: center;
@@ -47,7 +47,7 @@
   border: 1px solid hsl(51, 100%, 53%);
 }
 
-.container-steps {
+.containerSteps {
   padding-top: 0.2rem;
   background-color: rgba(187, 187, 187, 0.253);
   border-radius: 0.5rem;
@@ -56,37 +56,37 @@
   width: 78%;
 }
 
-.container-summary {
+.containerSummary {
   width: 78%;
   font-size: .93rem;
   margin: 0 auto;
   text-align: justify;
 }
 
-.container-steps p {
+.containerSteps p {
   font-size: 1rem;
   font-weight: 600;
 }
 
-.container-details ol {
+.containerDetails ol {
   margin: 0 2rem;
   font-size: 1rem;
   padding-bottom: 1.2rem;
 }
 
-.container-diets {
+.containerDiets {
   border-radius: 0.5rem;
   width: 78%;
   margin: 0 auto;
 }
 
-.container-diets p {
+.containerDiets p {
   padding-top: 0.9rem;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.list-diets {
+.listDiets {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +94,7 @@
   justify-content: space-around;
 }
 
-.list-diets li {
+.listDiets li {
   background-color: hsl(51, 100%, 50%);
   border-radius: 0.8rem;
   font-size: 0.95rem;
@@ -102,13 +102,13 @@
   width: 12rem;
 }
 
-.img-recipe {
+.imgRecipe {
   width: 38%;
   border-radius: 0.8rem;
   margin-bottom: 1rem;
 }
 
-.container-score {
+.containerScore {
   width: 78%;
   display: flex;
   font-size: .9rem;
@@ -116,15 +116,15 @@
   margin: 1.3rem auto;
 }
 
-.text-msh{
+.textMsh{
   border-bottom: .15rem solid hsl(51, 100%, 50%);
 }
 
-.container-backtohome{
+.containerBacktohome{
   width: 70%;
   margin: 0 auto;
 }
 
-.container-backtohome a {
+.containerBacktohome a {
   color: #000;
 }

@@ -19,6 +19,11 @@ export const getAllRecipes = () => async dispatch => {
     return apiData
 }
 
+export const getRecipes = async() => {
+    const apiRecipe = await axios.get(`/recipe`)
+    return apiRecipe.data
+}
+
 export const getRecipe = (id) => dispatch => {
     return axios.get(`/recipe/${id}`)
         .then(response => {
@@ -27,6 +32,11 @@ export const getRecipe = (id) => dispatch => {
                 payload: response.data
             })
         })
+}
+
+export const getRecipeById = async(id) => {
+    const apiRecipe = await axios.get(`/recipe/${id}`)
+    return apiRecipe.data
 }
 
 export const getRecipeSearchBar = (name) => dispatch => {
@@ -39,33 +49,33 @@ export const getRecipeSearchBar = (name) => dispatch => {
         })
 }
 
-export const filteredOrder = (payload) => {
-    return {
-        type: FILTER_ORDER,
-        payload
-    }
-}
+// export const filteredOrder = (payload) => {
+//     return {
+//         type: FILTER_ORDER,
+//         payload
+//     }
+// }
 
-export const filteredDietas = (payload) => {
-    return {
-        type: FILTER_DIETA,
-        payload
-    }
-}
+// export const filteredDietas = (payload) => {
+//     return {
+//         type: FILTER_DIETA,
+//         payload
+//     }
+// }
 
-export const filteredBdandApi = (payload) => {
-    return {
-        type: FILTER_BDAPI,
-        payload
-    }
-}
+// export const filteredBdandApi = (payload) => {
+//     return {
+//         type: FILTER_BDAPI,
+//         payload
+//     }
+// }
 
-export const filteredSearchRealTime = (payload) => {
-    return {
-        type: FILTER_SEARCH,
-        payload
-    }
-}
+// export const filteredSearchRealTime = (payload) => {
+//     return {
+//         type: FILTER_SEARCH,
+//         payload
+//     }
+// }
 
 export const postRecipes = (payload) => async dispatch => {
     const myRecipe = await axios.post(`/recipe`, payload)
@@ -78,6 +88,11 @@ export const postRecipes = (payload) => async dispatch => {
     return myRecipe
 }
 
+export const envioRecipes = async (payload) => {
+    const myRecipe = await axios.post(`/recipe`, payload)
+    return myRecipe
+}
+
 export const getAllDiets = () => async dispatch => {
     const prevDiets = await axios.get(`/types`)
     const dataDiets = await dispatch({
@@ -85,6 +100,11 @@ export const getAllDiets = () => async dispatch => {
         payload: prevDiets.data
     })
     return dataDiets
+}
+
+export const getDietas = async() => {
+    const prevDiets = await axios.get(`/types`)
+    return prevDiets.data
 }
 
 export const EliminatedDetailRecipe = () => dispatch => {

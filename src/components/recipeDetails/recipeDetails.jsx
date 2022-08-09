@@ -1,34 +1,26 @@
-import React, { useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getRecipe, EliminatedDetailRecipe } from "../../redux/actions";
+import { getRecipeById } from "../../redux/actions";
+import { useQuery } from 'react-query';
 import { Link } from "react-router-dom";
 import { Spinner } from "../Spinner/Spinner.jsx";
 
-import "./recipeDetails.css";
+import styles from "./recipeDetails.module.css";
 
 const RecipeDetails = () => {
   const { recipeId } = useParams();
 
-  const dispatch = useDispatch();
 
-  const recipe = useSelector((state) => state.recipe);
-
-  const instantDetail = useCallback(dispatch, [dispatch]);
-
-  useEffect(() => {
-    instantDetail(getRecipe(recipeId));
-
-    return () => {
-      dispatch(EliminatedDetailRecipe());
-    };
-  }, [instantDetail, recipeId]);
+  const { data: recipe, error, isLoading } = useQuery(
+    ["recipe", recipeId],
+    () => getRecipeById(recipeId),
+    { retry: 1 }
+  );
 
   const handleSteps = () => {
     if (recipe.steps?.length) {
       return recipe.steps?.map((step) => (
         <li key={recipe.steps.findIndex((e) => e === step)}>
-          <p className="number-list">
+          <p className={styles.numberList}>
             {recipe.steps.findIndex((e) => e === step) + 1}
           </p>
           <p
@@ -47,44 +39,42 @@ const RecipeDetails = () => {
     }
   };
 
-  console.log(recipeId);
-
   return (
     <>
-      <div className="container-backtohome">
+      <div className={styles.containerBacktohome}>
         <Link to="/home">Back to home</Link>
       </div>
-      <div className="container-details">
-        {Object.keys(recipe).length ? (
-          <div className="container-detrecipe">
-            <div className="encabezado-detail">
-              <h2 className="title-detail">{recipe.title}</h2>
-              <img className="img-recipe" src={recipe.image} alt="img-recipe" />
+      <div className={styles.containerDetails}>
+        {!isLoading ? (
+          <div className={styles.containerDetrecipe}>
+            <div className={styles.encabezadoDetail}>
+              <h2 className={styles.titleDetail}>{recipe.title}</h2>
+              <img className={styles.imgRecipe} src={recipe.image} alt="img-recipe" />
             </div>
-            <div className="container-score">
+            <div className={styles.containerScore}>
               <div>
-                <p className="text-msh">Minutes</p>
+                <p className={styles.textMsh}>Minutes</p>
                 <p>{recipe.minutes}"</p>
               </div>
               <div>
-                <p className="text-msh">Score</p>
+                <p className={styles.textMsh}>Score</p>
                 <p>{recipe.score}/100</p>
               </div>
               <div>
-                <p className="text-msh">HealthScore</p>
+                <p className={styles.textMsh}>HealthScore</p>
                 <p>{recipe.healthscore}/100</p>
               </div>
             </div>
-            <p className="container-summary">
+            <p className={styles.containerSummary}>
               {recipe.summary?.replace(/(<([^>]+)>)/gi, "")}
             </p>
-            <div className="container-steps">
+            <div className={styles.containerSteps}>
               <p>Steps</p>
-              <div className="listSteps">{handleSteps()}</div>
+              <div className={styles.listSteps}>{handleSteps()}</div>
             </div>
-            <div className="container-diets">
+            <div className={styles.containerDiets}>
               <p>Diets</p>
-              <ul className="list-diets">
+              <ul className={styles.listDiets}>
                 {recipe.diets ? (
                   recipe.diets?.map((diet) => (
                     <li key={recipe.diets.findIndex((e) => e === diet)}>
@@ -104,7 +94,7 @@ const RecipeDetails = () => {
         ) : (
           <Spinner />
         )}
-      </div>
+      </div>`
     </>
   );
 };

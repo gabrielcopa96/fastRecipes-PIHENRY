@@ -1,62 +1,79 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "react-query";
 import {
-  getAllDiets,
-  filteredBdandApi,
-  filteredDietas,
-  filteredOrder,
-  filteredSearchRealTime,
+  getDietas,
+  // filteredBdandApi,
+  // filteredDietas,
+  // filteredOrder,
+  // filteredSearchRealTime,
 } from "../../redux/actions/";
 import "./Filtro.css";
 
 const Filtro = ({ setData, data, recetas }) => {
-  const dietas = useSelector((state) => state.diets);
+  // const dietas = useSelector((state) => state.diets);
+
+  // getDietas
+  const { data: dietas, error, isLoading } = useQuery(["dietas"], getDietas, { retry: 3 });
 
   const [orden, setOrden] = useState("");
   const [search, setSearch] = useState("");
 
-  const dispatch = useDispatch();
 
   const [diet, setDiet] = useState({
     diets: [],
   });
 
-  useEffect(() => {
-    dispatch(getAllDiets());
-  }, [dispatch]);
+  // const handleFilterForDieta = (e) => {
+  //   dispatch(filteredDietas(e.target.value));
+  //   setDiet({
+  //     ...diet,
+  //     diets: [...diet.diets, e.target.value],
+  //   });
+  //   setData({ ...data, currentPage: 1 });
+  // };
 
-  const handleFilterForDieta = (e) => {
-    dispatch(filteredDietas(e.target.value));
-    setDiet({
-      ...diet,
-      diets: [...diet.diets, e.target.value],
-    });
-    setData({ ...data, currentPage: 1 });
-  };
+  // const handleApiBd = (e) => {
+  //   dispatch(filteredBdandApi(e.target.value));
+  //   setData({ ...data, currentPage: 1 });
+  // };
 
-  const handleApiBd = (e) => {
-    dispatch(filteredBdandApi(e.target.value));
-    setData({ ...data, currentPage: 1 });
-  };
+  // const handleFilterSort = (e) => {
+  //   e.preventDefault();
+  //   dispatch(filteredOrder(e.target.value));
+  //   setData({ ...data, currentPage: 1 });
+  //   setOrden(`ordenado ${e.target.value}`);
+  // };
 
-  const handleFilterSort = (e) => {
-    e.preventDefault();
-    dispatch(filteredOrder(e.target.value));
-    setData({ ...data, currentPage: 1 });
-    setOrden(`ordenado ${e.target.value}`);
-  };
+  // const handleSearchRecipesRealTime = (e) => {
+  //   e.preventDefault();
+  //   dispatch(filteredSearchRealTime(e.target.value));
+  //   setSearch(`filtrado ${e.target.value}`);
+  // };
 
-  const handleSearchRecipesRealTime = (e) => {
-    e.preventDefault();
-    dispatch(filteredSearchRealTime(e.target.value));
-    setSearch(`filtrado ${e.target.value}`);
-  };
+  console.log(dietas);
+
+
 
   return (
-    <Fragment>
+    <>
+      {/* <div>
+        {
+          isLoading ? (
+            <span>Loading...</span>
+          ) : (
+            <>
+              {
+                dietas.map((x,y) => (
+                  <span key={y} value={x.name}>{x.name}</span>
+                ))
+              }
+            </>
+            )
+        }
+      </div> */}
       <div className="container-filtro">
         <div className="block-filter">
-          <label className="label-search">Search:</label>
+          {/* <label className="label-search">Search:</label>
           <input
             type="text"
             className="search-input"
@@ -69,10 +86,10 @@ const Filtro = ({ setData, data, recetas }) => {
           <option disabled>Order by</option>
           <option value="asc">A -Z</option>
           <option value="desc">Z - A</option>
-        </select>
-        <select
+        </select> */}
+        {/* <select
           className="filter-diet"
-          onChange={(e) => handleFilterForDieta(e)}
+          // onChange={(e) => handleFilterForDieta(e)}
         >
           <option value="all recipes">All Recipes</option>
           {dietas?.map(({ id_typediet, name }) => (
@@ -80,15 +97,16 @@ const Filtro = ({ setData, data, recetas }) => {
               {name}
             </option>
           ))}
-        </select>
-        <select className="select-bdapi" onChange={(e) => handleApiBd(e)}>
+        </select> */}
+        {/* <select className="select-bdapi" onChange={(e) => handleApiBd(e)}>
           <option disabled>Filter for Diets</option>
           <option value="all">All Recipes</option>
           <option value="api">Api</option>
           <option value="bd">DataBase</option>
-        </select>
+        </select> */}
+        </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -4,12 +4,12 @@
     --clr-accent-400: hsl(142,90%,61%)
 }
 
-.container-child-card{
+.containerChildCard{
     flex: 0 28%;
     margin-bottom: 3%; /* (100-32*3)/2*/
 }
 
-.card-recipe{
+.cardRecipe{
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 45ch;
@@ -21,7 +21,7 @@
     overflow: hidden;
 }
 
-.card-content{
+.cardContent{
     --padding: 1.2rem;
     height: 50%;
     padding: var(--padding);
@@ -35,22 +35,22 @@
     transition: transform 500ms ease-in-out;
 }
 
-.card-recipe:hover .card-content {
+.cardRecipe:hover .cardContent {
     transform: translateY(60%)
 }
 
 
-.card-title {
+.cardTitle {
     position: relative;
     margin-top: -.1rem;
     font-size: .95rem;
 }
 
-.card-body {
+.cardBody {
     font-size: .82rem;
 }
 
-.card-title::after {
+.cardTitle::after {
     content: "";
     position: absolute;
     margin: 0 0 -.2rem 0;
@@ -64,28 +64,28 @@
     transition: transform 500ms ease;
 }
 
-.card-recipe:hover .card-title::after {
+.cardRecipe:hover .cardTitle::after {
     transform: scaleX(1);
 }
 
-.card-body{
+.cardBody{
     display: flex;
     flex-wrap: wrap;
     margin: 5rem 0 10px 0;
 }
 
-.card-body p{
+.cardBody p{
     border: 1px solid hsl(51, 100%, 50%);
     border-radius: .4rem;
     padding: .2rem;
     margin: 0 .2rem 0 .2rem;
 }
 
-.card-recipe:hover .card-body {
+.cardRecipe:hover .cardBody {
     margin: .5rem 0 .5rem 0;
 }
 
-.btn-card{
+.btnCard{
     display: inline;
     border: none;
     font-family: 'Bebas Neue', cursive;
@@ -98,8 +98,8 @@
     padding: 0.3rem 1em;
 }
 
-.btn-card:hover,
-.btn-card:focus {
+.btnCard:hover,
+.btnCard:focus {
     background-color: hsl(51, 91%, 46%);
 }
 

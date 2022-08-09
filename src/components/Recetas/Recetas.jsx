@@ -1,89 +1,76 @@
-import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import RecipeCard from "../RecipeCard/RecipeCard.jsx";
-import { getAllRecipes } from "../../redux/actions";
-import "./Recetas.css";
+import { getRecipes } from "../../redux/actions";
+import styles from "./recetas.module.css";
 import Paginate from "../Paginate/Paginate.jsx";
 import Filtro from "../Filtro/Filtro.jsx";
 import { Spinner } from "../Spinner/Spinner.jsx";
+import { useQuery } from "react-query";
 
 const Recetas = () => {
-  const recetas = useSelector((state) => state.recipes);
-  const dispatch = useDispatch();
 
-  const [data, setData] = useState({
-    loading: true,
-    currentPage: 1, // !El inicio de mi pagina o cada una  de ellas
-    paginado: [],
+  const { data: recetas, error, isLoading } = useQuery(["recetas"], getRecipes, { retry: 1 });
+
+  const [datos, setDatos] = useState({
+    currentPage: 1,
     pageNumberLimit: 6,
     selectOrder: "",
     itemsPerPage: 9,
   });
-  const [term, setTerm] = useState(""); //? estado para el filtrado en tiempo real
-  const [maxpageNumberLimit, setMaxPageNumberLimit] = useState(6); //! 6
-  const [minpageNumberLimit, setMinPageNumberLimit] = useState(0); //! 0
+  const [term, setTerm] = useState(""); 
   const [search, setSearch] = useState("");
 
-  const instantCallback = useCallback(dispatch, [dispatch]);
+  const indexOfLastItem = datos.currentPage * datos.itemsPerPage; //! (1 * 9) -> 9
 
-  useEffect(() => {
-    if (recetas.length === 0) {
-      instantCallback(getAllRecipes()); //! Utilizo el useDisptach para dispachar mi funcion que recibe todas mis recetas
-      setData({ ...data, loading: false });
-    }
-  }, [instantCallback]);
+  const indexOfFirstItem = indexOfLastItem - datos.itemsPerPage; //! (9 - 9) -> 0
 
-  const indexOfLastItem = data.currentPage * data.itemsPerPage; //! (1 * 9) -> 9
+  const currentItems = recetas && recetas.slice(indexOfFirstItem, indexOfLastItem);
 
-  const indexOfFirstItem = indexOfLastItem - data.itemsPerPage; //! (9 - 9) -> 0
-
-  const currentItems = recetas.slice(indexOfFirstItem, indexOfLastItem);
+  console.log(recetas);
 
   return (
-    <Fragment>
+    <>
       <Filtro
         search={search}
         setTerm={setTerm}
-        data={data}
+        data={datos}
         term={term}
         recetas={recetas}
-        setData={setData}
+        setData={setDatos}
         setSearch={setSearch}
         filter={currentItems}
       />
 
-      <div className="container-cards">
-        {currentItems?.length ? (
-          currentItems.map(({ id, title, summary, image, diets, dieta }) => (
+        <Paginate
+          data={datos}
+          recetas={recetas}
+          setData={setDatos}
+          setSearch={setSearch}
+          filter={currentItems}
+        />
+        
+      <div className={styles.containerCards}>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          currentItems?.map((x, y) => (
             <RecipeCard
-              id={id}
-              title={title}
-              dieta={dieta}
-              summary={summary}
-              image={image}
-              diets={diets}
-              key={id}
+              key={y}
+              title={x.title}
+              image={x.image}
+              diets={x.diets}
+              dieta={x.dieta}
+              id={x.id}
             />
           ))
-        ) : (
-          <Spinner></Spinner>
         )}
       </div>
 
-      {currentItems?.length ? (
-        <Paginate
-          setMaxPageNumberLimit={setMaxPageNumberLimit}
-          setMinPageNumberLimit={setMinPageNumberLimit}
-          data={data}
-          recetas={recetas}
-          setData={setData}
-          maxpageNumberLimit={maxpageNumberLimit}
-          minpageNumberLimit={minpageNumberLimit}
-        />
-      ) : (
-        <div></div>
-      )}
-    </Fragment>
+      {
+        error && <span>Error en el servidor</span>
+      }
+
+    </>
   );
 };
 

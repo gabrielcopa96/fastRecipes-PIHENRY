@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom';
-import "./Recipecard.css";
+import styles from "./recipecard.module.css";
 
 const RecipeCard = ({title, image, diets, dieta, id}) => {
   const handlerDiets = () => { 
-    if(diets) return diets.map(x => (<p key={diets.findIndex((e) => e === x)}>{x}</p>));
-    return dieta ? dieta.map(x => (<p key={x.id_typediet}>{x.name}</p>)) : null
+    if(diets) return diets.map((x,y) => (<p key={y}>{x}</p>));
+    return dieta ? dieta.map((x,y) => (<p key={y}>{x.name}</p>)) : null
   }
 
   return (
     <>
       <div
-        className="card-recipe container-child-card"
+        className={`${styles.cardRecipe} ${styles.containerChildCard}`}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className="card-content">
-          <h3 className="card-title">{title}</h3>
-          <div className="card-body">
+        <div className={styles.cardContent}>
+          <h3 className={styles.cardTitle}>{title}</h3>
+          <div className={styles.cardBody}>
             {handlerDiets()}
           </div>
-          <Link className="btn-card" to={`/home/${id}`}>View Details</Link>
+          <Link className={styles.btnCard} to={`/home/${id}`}>View Details</Link>
         </div>
       </div>
     </>

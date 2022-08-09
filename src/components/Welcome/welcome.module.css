@@ -1,4 +1,4 @@
-.container-welcome{
+.containerWelcome{
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -17,7 +17,7 @@
     color: #fff;   
 }
 
-.logo-welcome:after{
+.logoWelcome:after{
     position: absolute;
     content: "";
     height: 60px;
@@ -41,7 +41,7 @@
     }
 }
 
-.logo-welcome{
+.logoWelcome{
     font-size: 2.2rem;
     text-align: center;
     width: 100%;
@@ -68,12 +68,12 @@
 
 
 
-.title-2{
+.title2{
     color: hsl(51, 100%, 50%);
     font-size: 3.2rem;
 }
 
-.btn-welcome{
+.btnWelcome{
     border: .13rem solid hsl(51, 100%, 50%);
     padding: 1.2rem;
     text-align: center;
@@ -87,7 +87,7 @@
     margin-top:3rem;
 }
 
-.btn-welcome:hover{
+.btnWelcome:hover{
     background-color:hsl(51, 100%, 50%);
     color: hsl(207, 19%, 9%);
     transition: all .8s ease;

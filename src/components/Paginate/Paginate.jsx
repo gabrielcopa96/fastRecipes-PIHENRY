@@ -1,20 +1,17 @@
-import React from "react";
-import "./Paginate.css";
+import styles from"./paginate.module.css";
 
 const Paginate = ({
-  setMaxPageNumberLimit,
-  setMinPageNumberLimit,
   data,
   recetas,
   setData,
-  maxpageNumberLimit,
-  minpageNumberLimit,
 }) => {
 
   const pages = [];
 
-  for (let i = 1; i <= Math.ceil(recetas.length / data.itemsPerPage); i++) {
-    pages.push(i);
+  if(recetas !== undefined) {
+    for (let i = 1; i <= Math.ceil(recetas.length / data.itemsPerPage); i++) {
+      pages.push(i);
+    }
   }
 
   const handleClickPageNumbers = (number) => {
@@ -32,7 +29,7 @@ const Paginate = ({
             id={number}
             value={number}
             onClick={(e) => handleClickPageNumbers(e.target.value)}
-            className={currentPage === number ? "active" : null}
+            className={currentPage === number ? `${styles.active}` : null}
           >
             {number}
           </li>
@@ -59,11 +56,11 @@ const Paginate = ({
   };
 
   return (
-    <div className="container-paginate">
-      <ul className="pageNumber">
-        <button className="pag-prev" disabled={currentPage === pages[0] ? true : false} onClick={previusPage}>prev</button>
+    <div className={styles.containerPaginate}>
+      <ul className={styles.pageNumber}>
+        <button className={styles.pagPrev} disabled={currentPage === pages[0] ? true : false} onClick={previusPage}>prev</button>
         {renderPageNumbers}
-        <button className="pag-next" disabled={currentPage === pages[pages.length - 1] ? true : false} onClick={nextPage}>next</button>
+        <button className={styles.pagNext} disabled={currentPage === pages[pages.length - 1] ? true : false} onClick={nextPage}>next</button>
       </ul>
     </div>
   );
